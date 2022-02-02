@@ -35,7 +35,27 @@ class App {
     }
 
     checkWinner() {
+        for (let i = 0; i < this.winningVariants.length; i++) {
+            const variant = this.winningVariants[i];
+            const a = this.getCellValue(variant[0]);
+            const b = this.getCellValue(variant[1]);
+            const c = this.getCellValue(variant[2]);
 
+            if (a == "" || b == "" || c == "") continue;
+
+            if (a == b && b == c) {
+                console.log("Zwycięzca: " + a);
+                this.setWinner(" - zwyciężył: " + a);
+            }
+        }
+    }
+
+    setWinner(str) {
+        document.getElementById("winner").innerHTML = str;
+    }
+
+    getCellValue(index) {
+        return document.querySelector(`.cell[data-index='${index}']`).innerHTML;
     }
 }
 
