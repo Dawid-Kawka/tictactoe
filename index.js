@@ -19,6 +19,9 @@ class App {
     init() {
         document.querySelectorAll(".cell").forEach(
             cell => cell.addEventListener("click", this.cellClick));
+
+        document.getElementById("restart-game").addEventListener("click",
+            () => this.restartGame());
     }
     cellClick = (e) => {
         //console.log(e.target)
