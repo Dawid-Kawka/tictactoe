@@ -25,6 +25,14 @@ class App {
         this.playerTurn(e.target)
     }
 
+    initGame() {
+        this.currentPlayer = "X";
+
+        document.querySelectorAll(".cell").forEach(
+            el => { el.innerHTML = "" }
+        );
+    }
+
     playerTurn(el) {
         if (el.innerHTML == "X" || el.innerHTML == "O") return;
         el.innerHTML = this.currentPlayer;
@@ -46,8 +54,13 @@ class App {
             if (a == b && b == c) {
                 console.log("Zwycięzca: " + a);
                 this.setWinner(" - zwyciężył: " + a);
+                this.restartGame();
             }
         }
+    }
+
+    restartGame() {
+        this.initGame();
     }
 
     setWinner(str) {
